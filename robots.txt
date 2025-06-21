@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://aadharcarddownload.github.io/sitemap.xml
+Sitemap: https://litertogallon.github.io/sitemap.xml
