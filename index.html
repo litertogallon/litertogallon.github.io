@@ -1,236 +1,305 @@
 <!DOCTYPE html>
-<html lang="en-IN">
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<style>:root{--color-primary:#021835;}</style>
-<link rel="stylesheet" href=style.css>
-<link rel="icon" type="image/jpg" href="as.jpg">
-<meta name="viewport" content="width=device-width, initial-scale=1", shrink-to-fit=no>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<title>Aadhar Card - Download Aadhar | UIDAI, Get Aadhar Card</title>
-<meta name="description" content="The Aadhar card is a very important document. It is used for identification in government and private services and is also used as address proof. Whether you have to apply for any job or avail any government service, the Aadhar card is taken everywhere.">
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<link rel="canonical" href="https://litertogallon.github.io/">
-<meta name="keywords" content="aadhar card download, aadhar download, aadhar card, download aadhar, aadharcard update check, आधार कार्ड डाउनलोड,">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volume Converter - Liters to Gallons</title>
+    <style>
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #166088;
+            --accent-color: #4fc3f7;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --success-color: #28a745;
+            --error-color: #dc3545;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark-color);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: 20px auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+        }
+
+        .header p {
+            color: #666;
+        }
+
+        .visual-header {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .visual-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .converter {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .conversion-direction {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .switch-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .switch-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .switch-btn i {
+            font-size: 18px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        label {
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        input {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(79, 195, 247, 0.2);
+        }
+
+        .result {
+            margin-top: 5px;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 15px;
+            background-color: rgba(79, 195, 247, 0.1);
+            border-radius: 5px;
+            color: var(--secondary-color);
+            text-align: center;
+        }
+
+        .formula {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .formula h3 {
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Icon font for the switch button */
+        @font-face {
+            font-family: 'Material Icons';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://fonts.gstatic.com/s/materialicons/v140/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+        }
+
+        .material-icons {
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <div class="header">
+            <h1>Volume Unit Converter</h1>
+            <p>Easily convert between liters and gallons</p>
+        </div>
 
-<!-- Simulate a smartphone / tablet -->
-<div class="mobile-container">
+        <div class="visual-header">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/415443c9-4eb1-4429-80ef-ccaa3d2c9a0a.png" alt="Measuring cups and beakers with blue liquids showing different volume measurements" />
+        </div>
 
-<!-- Top Navigation Menu -->
-<div class="topnav">
-  <a class="head">aadhaarcarddownload .github.io/</a>
-  <div id="myLinks">
-    <a href="disclaimer.html">Disclaimer</a>
-    <a href="privacypolicy.html">Privacy Policy</a>
-  </div>
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-    <i class="fa fa-bars"></i>
-  </a>
-</div>
-<div class="example">
-<h1>Aadhar Card - Download Aadhar | UIDAI, Get Aadhar Card</h1>
-<p>The Aadhar card is a very important document. It is used for identification in government and private services and is also used as address proof. Whether you have to apply for any job or avail any government service, the <a href="https://uidai.gov.in/en">Aadhar card</a> is taken everywhere. If you have lost your Aadhaar card or have got it updated and want to download it, then the method to download it is given below.</p>
-<p>You can easily download your Aadhar card from the official website of <a href="https://uidai.gov.in/en">UIDAI</a> (Unique Identification Authority of India). Apart from this, you can also download your Aadhar card from mAadhaar, DigiLocker, and the UMANG portal. How to download your Aadhar card is explained in detail below.</p>
-<h2>Aadhar card Download</h2>
-<p>Five methods to download an <a href="https://uidai.gov.in/en">Aadhar card</a> are given below, by following which you can download your Aadhaar.</p>
-<h3>Aadhaar Card Download Using Aadhaar Number</h3>
-<ul class="a">
-<li><p>To download an Aadhar card from UIDAI, first of all, you have to visit the official website, <a href="https://uidai.gov.in/en">https://uidai.gov.in/en</a> .</p></li>
-<li><p>After reaching home, you have to click on My Aadhaar.</p></li>
-<div class="res"><img src="img/adha.jpg" alt="Unique Identification Authority of India" class="r"></div>
+        <div class="converter">
+            <div class="conversion-direction">
+                <button id="switchBtn" class="switch-btn">
+                    <span class="material-icons" id="switchIcon">swap_vert</span>
+                    <span id="directionText">Liters to Gallons</span>
+                </button>
+            </div>
 
-<li><p>Now many options will come in front of you; you have to click on Download Aadhaar.</p></li>
-<div class="res"><img src="img/adha1.jpg" alt="UIDAI" class="r"></div>
+            <div class="input-group" id="inputSection">
+                <label for="inputValue">Liters (L)</label>
+                <input type="number" id="inputValue" placeholder="Enter volume in liters" step="0.01">
+                <div class="result" id="result">
+                    Enter a value to see the conversion
+                </div>
+            </div>
+        </div>
 
-<li><p>After this, the form will open. In this, you have to fill in the Aadhaar number and captcha code.</p></li>
-<li><p>After filling out the form, click on Send OTP.</p></li>
-<div class="res"><img src="img/adha3.jpg" alt="Unique Identification Authority of India" class="r"></div>
-
-<li><p>An OTP will be sent to you on the mobile number linked with the Aadhaar card, enter that OTP and verify it.</p></li>
-<li><p>After that, click on Download Aadhaar; after clicking, your Aadhaar card will be downloaded.
-</p></li></ul>
-<h3>Aadhar Card Download from Enrollment ID</h3>
-<ul class="a">
-<li><p>You should visit the UIDAI portal at <a href="https://uidai.gov.in/en">https://uidai.gov.in/en</a>.</p></li>
-<li><p>After the website opens; click on My Aadhaar.</p></li>
-<li><p>Then click on Download Aadhaar.</p></li>
-<li><p>A page will open; click on the second option.</p></li>
-<div class="res"><img src="img/adha4.jpg" alt="Enrolment ID number" class="r"></div>
-
-<li><p>Now enter the enrollment number, date , time, captcha, and click on Send OTP.</p></li>
-<li><p>Now OTP will come on the mobile number linked to your Aadhar card.</p></li>
-<li><p>Then you will have to verify the OTP.</p></li>
-<li><p>Now, you click on Aadhar Card, Aadhar Card will be downloaded.</p></li>
-</ul>
-<h3>Download Aadhar Card from mAadhar App.</h3>
-<ul class="a">
-<li><p>First of all you have to go to Play Store, then search mAadhaar App and install it.</p></li>
-<div class="res"><img src="img/adha13.jpeg" alt="mAadhar App" class="r"></div>
-
-<li><p>Open the app and register by entering your registered mobile number and OTP.</p></li>
-<li><p>After that you will get the option of 'Download Aadhaar' Click on it.</p></li>
-<li><p>You will see two options: Regular Aadhaar and Masked Aadhaar. Choose one as per your requirements.</p></li>
-<div class="mask">
-  <p><b>Notes: Regular Aadhaar:</b> Displays all the digits of the Aadhaar number.</p>
-  <p><b>Masked Aadhaar:</b> The last 4 digits of the Aadhaar number are visible and the first 8 digits are hidden.</p>
-  </div>
-<li><p>Enter your Aadhaar number, VID number, or Enrollment ID number, and fill in the captcha code.</p></li>
-<li><p>Click on the Request OTP button, and you will receive an OTP on the mobile number registered with your Aadhaar card.</p></li>
-<li><p>Enter the OTP and click on "Download". After this, your Aadhar card will be downloaded on your device in PDF format.</p></li>
-</ul>
-<p>The official UIDAI mobile app, mAadhaar, was created to safely store and retrieve your Aadhaar card online. This app provides many services like:</p>
-<ul class="a">
-  <li><p>Aadhaar Status</p></li>
-  <li><p>Download Aadhaar</p></li>
-  <li><p>PVC Card Request and Order PVC Card</p></li>
-  <li><p>Retrieve EID/VID</p></li>
-  <li><p>Check Aadhaar Validity</p></li>
-  <li><p>Verify Email/Mobile</p></li>
-  <li><p>Generate Virtual ID</p></li>
-  <li><p>Retrieve Order Aadhaar Status</p></li>
-</ul>
-<h3>Download the Aadhar Card from DigiLocker.</h3>
-<p>DigiLocker is a government portal on which you will find almost every government document. You can download your Aadhaar card from DigiLocker by following the steps given below.</p>
-<ul class="a">
-<li><p>First, you open the official website of DigiLocker: <a href="https://www.digilocker.gov.in/">https://www.digilocker.gov.in/</a>.</p></li>
-<li><p>You have to click on Login/Register, then the login page will open; enter your mobile number or Aadhar card number.</p></li>
-<li><p>After logging in, the home page will open; you have to click on Search Documents.</p></li>
-<div class="res"><img src="img/adha5.jpg" alt="DigiLocker" class="r"></div>
-
-<li><p>You have to write an Aadhar Card in the search box, and it will be searched.</p></li>
-<li><p>Now you have to click on the Unique Identification Authority of India (UIDAI). Now, a new page will open, and you have to click on Aadhar Card.</p></li>
-<li><p>After this an OTP will be sent to the mobile number registered with your Aadhar card, enter the OTP and submit.</p></li>
-<li><p>Now you have to click on Issued Document.</p></li>
-<div class="res"><img src="img/adha6.jpg" alt="DigiLocker" class="r"></div>
-
-<li><p>Now you will get the option to download the Aadhaar card; from there you can download the Aadhaar card.</p></li>
-</ul>
-<h3>Download the Aadhar card from UMANG.</h3>
-<ul class="a">
-<li><p>Visit the UMANG portal at <a href="https://web.umang.gov.in/landing/">https://web.umang.gov.in/landing/</a>.</p></li>
-<div class="res"><img src="img/adha7.jpg" alt="UMANG" class="r"></div>
-
-<li><p>Now you have to log in by entering your mobile number or email. If you have not created an account then first create your account.</p></li>
-<li><p>Now the home page will open in front of you; after this, you have to click on Services.</p></li>
-<li><p>After clicking, a search box will appear above; type Aadhar card in it and search.</p></li>
-<li><p>Then click on Download Aadhaar. Now a new page will open.</p></li>
-<div class="res"><img src="img/adha8.jpg" alt="UMANG" class="r"></div>
-
-<li><p>In which you have to fill in your Aadhar card and captcha code and click on Send OTP.</p></li>
-<li><p>After this, OTP will be sent to the mobile number linked to your Aadhar card.</p></li>
-<li><p>Now you have to verify by entering OTP. you can download your Aadhaar.</p></li>
-</ul>
-<h3>Aadhar Card Update Status Check</h3>
-<p>If you have updated your DOB, mobile number, name, address, or any other information in your Aadhar card and want to check your Aadhar card update, then you can check your status by following the steps given below.</p>
-<ul class="a">
-  <li><p>First of all, you should visit the official website, <a href="https://myaadhaar.uidai.gov.in/">https://myaadhaar.uidai.gov.in/</a>.</p></li>
-  <li><p>Now you have to click on Check Enrollment/Update Status option.</p></li>
-  <div class="res"><img src="img/adha15.jpg" alt="Aadhar Update Status" class="r"></div>
-
-  <li><p>As soon as you click on it, another page will open in front of you. On that page, you will see the option of Enrolment ID, SRN, or URN.</p></li>
-  <div class="res"><img src="img/adha16.jpg" alt="Aadhar Update Status" class="r"></div>
-
- <li><p>Then you select the Enrolment ID and enter your 14-digit enrolment number, time, date, and captcha and click on the "Submit" button.</p></li>
- <li><p>After this, your status will start appearing on your screen.</p></li></ul>
- <h3>What is Aadhar card</h3>
- <p>The Aadhar card is an important identity card for Indian citizens. The Aadhaar card is issued by the UIDAI (Unique Identification Authority of India). It comes under the Ministry of Electronics, Information Technology, Ministry of Communications and Information Technology, Government of India. It contains personal information of all the citizens of India, such as name, date of birth, address, father's name, pin code and a unique 12-digit Aadhaar number. And it is used everywhere, including in banks, insurance, government jobs, government schemes, private jobs, etc.</p>
- <h3>Kind of Aadhaar Card</h3>
- <ul class="a">
-   <li><p><b>e-Aadhaar Card: </b>e-Aadhaar card is in digital form. You can keep it in your mobile, computer, pen drive, laptop, hard disk drive, etc. Since it is digital, there is no risk of it getting torn or stolen. And it is password-protected.</p></li>
-   <li><p><b>Masked Aadhaar Card: </b>This is a version of your e-Aadhaar in which only the last 4 digits of your Aadhaar number are visible (called Masked Aadhaar Card), which provides an additional layer of privacy.</p></li>
-   <li><p><b>Regular Aadhar card: </b>Displays all the digits of the Aadhar number.</p></li>
-   <li><p><b>Aadhaar PCV Card: </b>It is made of polyvinyl chloride (PVC). It looks like a debit card or credit card. It is sturdy and can be easily carried in a wallet.</p></li></ul>
-<h3>Aadhar Card Password</h3>
-<p>When you download your Aadhaar card, it is in PDF format and is password protected. To open it, write four capital letters of your name (which is the suffix of the Aadhaar card) and your year of birth (YYYY).</p>
-<div style="overflow-x:auto;" class="first">
-<table bgcolor="white">
-  <tr>
-    <th>Name</th>
-    <th>Date of Birth</th>
-    <th>Password</th>
-  </tr>
-  <tr>
-    <td>Ajay kumar</td>
-    <td>1995</td>
-    <td>AJAY1995</td>
-  </tr>
-  <tr>
-    <td>Komal Yadav</td>
-    <td>1999</td>
-    <td>KOMA1999</td>
-  </tr>
-  <tr>
-    <td>Sujeet Singh</td>
-    <td>2001</td>
-    <td>SUJE2001</td>
-  </tr>
-  <tr>
-    <td>Rohan</td>
-    <td>2000</td>
-    <td>ROHA2002</td>
-  </tr>
-  <tr>
-    <td>Sumit</td>
-    <td>2008</td>
-    <td>SUMI2008</td>
-  </tr>
-  <tr>
-    <td>Abhishek</td>
-    <td>1998</td>
-    <td>ABHI1998</td>
-  </tr>
-</table>
-</div>
-<br>
-<div class="mask">
-  <p>You can visit the closest Aadhaar center or utilize the following contact information if you have any questions about Aadhaar:</p>
-  <p><b>Helpline number: </b>1947</p>
-  <p><b>Email: </b>help@uidai.gov.in</p>
-</div>
-<br>
-<!-- End smartphone / tablet look -->
-</div>
-
-<script>
-function myFunction() {
-  var x = document.getElementById("myLinks");
-  if (x.style.display === "block") {
-    x.style.display = "none";
-  } else {
-    x.style.display = "block";
-  }
-}
-</script>
-</div>
-<footer class="footer">
-  <div class="footer-container">
-    <p>This website is not operated by any government body, it is an independent informational website, whose purpose is to provide information related to Aadhar card to the general public and to help the common people.</p>
-    <div class="footer-left">
-      <h4>About Us</h4>
-      <p>aadhaarcarddownload.github.io/, we provide information related to Aadhar Card, in which various types of information, like checking Aadhar Card status, updates, enrollment, etc., are provided.</p>
+        <div class="formula">
+            <h3>Conversion Formula</h3>
+            <p>
+                <strong>Liters to Gallons:</strong> gallons = liters × 0.264172<br>
+                <strong>Gallons to Liters:</strong> liters = gallons × 3.78541
+            </p>
+        </div>
     </div>
 
-    <div class="footer-middle">
-      <h4>Quick Links</h4>
-      <ul>
-        <li><a href="disclaimer.html">Disclaimer </a></li>
-        <li><a href="privacypolicy.html">Privacy Policy</a></li>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const switchBtn = document.getElementById('switchBtn');
+            const switchIcon = document.getElementById('switchIcon');
+            const directionText = document.getElementById('directionText');
+            const inputValue = document.getElementById('inputValue');
+            const result = document.getElementById('result');
+            const inputSection = document.getElementById('inputSection');
+            
+            let isLitersToGallons = true;
 
-      </ul>
-    </div>
+            // Initial setup
+            updateInputLabel();
+            inputValue.focus();
 
-    <div class="footer-right">
-      <h4>Contact Us</h4>
-      <p>shivak10254@gmail.com</p>
+            // Switch conversion direction
+            switchBtn.addEventListener('click', function() {
+                isLitersToGallons = !isLitersToGallons;
+                updateInputLabel();
+                convert();
+            });
 
-    </div>
-  </div>
+            // Convert on input change
+            inputValue.addEventListener('input', function() {
+                convert();
+            });
 
-  <div class="footer-bottom">
-  </div>
-</footer>
+            function updateInputLabel() {
+                const label = inputSection.querySelector('label');
+                if (isLitersToGallons) {
+                    label.textContent = 'Liters (L)';
+                    directionText.textContent = 'Liters to Gallons';
+                    inputValue.placeholder = 'Enter volume in liters';
+                    switchIcon.textContent = 'swap_vert';
+                } else {
+                    label.textContent = 'Gallons (gal)';
+                    directionText.textContent = 'Gallons to Liters';
+                    inputValue.placeholder = 'Enter volume in gallons';
+                    switchIcon.textContent = 'swap_horiz';
+                }
+            }
+
+            function convert() {
+                const value = parseFloat(inputValue.value);
+                
+                if (isNaN(value)) {
+                    result.textContent = 'Enter a value to see the conversion';
+                    return;
+                }
+
+                if (value < 0) {
+                    result.textContent = 'Please enter a positive number';
+                    return;
+                }
+
+                let convertedValue, fromUnit, toUnit;
+                
+                if (isLitersToGallons) {
+                    convertedValue = value * 0.264172;
+                    fromUnit = 'L';
+                    toUnit = 'gal';
+                } else {
+                    convertedValue = value * 3.78541;
+                    fromUnit = 'gal';
+                    toUnit = 'L';
+                }
+
+                result.innerHTML = `${value.toFixed(2)} ${fromUnit} = <strong>${convertedValue.toFixed(4)} ${toUnit}</strong>`;
+            }
+        });
+    </script>
 </body>
 </html>
+
