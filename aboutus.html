@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="HI">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href=style.css>
+    <title>About Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="fevicon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="fevicon/favicon.svg" />
+<link rel="shortcut icon" href="fevicon/favicon.ico" />
+
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">
+                Chalisa
+            </a>
+
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="/" class="nav-link active">Home</a>
+                </li>
+
+            </ul>
+
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>हमारे बारे में</h1>
+
+        <div class="about-content">
+            <div class="mission-section">
+                <h2>हमारा मिशन</h2>
+                <p>हनुमान चालीसा वेबसाइट का उद्देश्य श्री हनुमान जी की दिव्य कृपा और शक्ति को डिजिटल माध्यम से लोगों तक पहुँचाना है। हमारा प्रयास है कि हर व्यक्ति आसानी से हनुमान चालीसा का पाठ कर सके और भगवान हनुमान की कृपा प्राप्त कर सके।</p>
+                <p>हमारी वेबसाइट पर आपको हनुमान चालीसा के साथ-साथ उसके अर्थ, महत्व और इतिहास के बारे में भी जानकारी मिलेगी। हम चाहते हैं कि लोगों की आस्था और भक्ति को नई दिशा मिले और वे आध्यात्मिक रूप से समृद्ध हों।</p>
+            </div>
+        <div class="contact-info">
+                <h2>संपर्क करें</h2>
+                <p>यदि आपके पास कोई प्रश्न, सुझाव या प्रतिक्रिया है, तो कृपया हमसे संपर्क करने में संकोच न करें।</p>
+                <p>ईमेल: aymcar5454@gmail.com</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+
+            hamburger.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+
+                // Change icon based on menu state
+                const icon = hamburger.querySelector('i');
+                if (navMenu.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+
+            // Close menu when a link is clicked (useful on mobile)
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('active');
+                    const icon = hamburger.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                });
+            });
+        });
+    </script>
+    <footer>
+      <h3>Links</h3>
+      <a href="/">Home</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="disclaimer.html">Disclaimer</a>
+      <a href="termandcondition.html">Term & Condition</a>
+      <p>© 2025 hanumanchalisa.gen.in</p>
+    </footer>
+</body>
+</html>
